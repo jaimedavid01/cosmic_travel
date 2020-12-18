@@ -1,0 +1,23 @@
+<h1>Name: <%= @scientist.name %></h1><br>
+<p>Field of Study: <%=@scientist.field_of_study %><p><br>
+
+<h2>Missions</h2>
+<% if @scientist.missions.length == 0 %>
+<p>This Scientist has no Missions Yet<p>
+<%else%>
+<ul>
+<% @scientist.missions.each do |m| %>
+<li>
+<p> Planet Name: <%= m.planet.name %> </p>
+<p> Mission name: <%= m.name %></p>
+
+</li>
+<% end %>
+</ul>
+<% end %>
+
+
+<%= link_to 'Add New Mission', new_missions_path %><br>
+<%= link_to 'Edit Scientist', edit_scientist_path(@scientist) %><br>
+<%= link_to 'Scientist Lists', scientists_path %><br>
+<%= button_to 'Delete Scientists', scientist_path(@scientist), method: :delete %><br>
